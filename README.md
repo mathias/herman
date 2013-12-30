@@ -1,6 +1,6 @@
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Woody_Herman.jpg/220px-Woody_Herman.jpg" alt="Woody Herman playing clarinet" style="float:right;">
-
 # herman &mdash; Woody Herman & His Thundering Herd
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Woody_Herman.jpg/220px-Woody_Herman.jpg" alt="Woody Herman playing clarinet" align="right">
 
 This project is a combination of Pallet recipes to create a Hadoop cluster (or a single Hadoop node locally with Virtualbox) and Cascalog to write queries on them.
 
