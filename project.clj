@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repositories {"sonatype" "http://oss.sonatype.org/content/repositories/releases/"}
   :dependencies [[org.clojure/clojure "1.5.1"]
+                 [com.palletops/pallet "0.8.0-RC.5"]
                  [pallet-hadoop "0.3.3-beta.2"]
                  [org.cloudhoist/pallet-jclouds "1.4.2"]
                  [org.jclouds/jclouds-all "1.4.2"]
