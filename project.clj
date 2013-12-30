@@ -3,4 +3,13 @@
   :url "https://github.com/mathias/herman"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]])
+  :repositories {"sonatype" "http://oss.sonatype.org/content/repositories/releases/"}
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [pallet-hadoop "0.3.3-beta.2"]
+                 [org.cloudhoist/pallet-jclouds "1.4.2"]
+                 [org.jclouds/jclouds-all "1.4.2"]
+                 [org.jclouds.driver/jclouds-jsch "1.4.2"]
+                 [org.jclouds.driver/jclouds-slf4j "1.4.2"]
+                 [ch.qos.logback/logback-classic "1.0.1"]
+                 [ch.qos.logback/logback-core "1.0.1"]
+                 [com.palletops/pallet-vmfest "0.3.0-beta.2"]])
