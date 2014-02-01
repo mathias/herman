@@ -14,85 +14,16 @@ The name is in reference to Woody Herman and His Thundering Herd big band. Herma
 
 Don't yet. This isn't ready for prime time.
 
-### Temporary Vagrant setup:
+### (Another) Temporary Vagrant setup:
 
-For local dev, I quickly set up a Virtualbox VM with Vagrant, using the following instructions. (Couldn't get Pallet to work yet, but eventually both dev and prod boxes will be provisioned and configured with Pallet.)
 
 ```sh
 vagrant up
 vagrant vbguest --do install
-vagrant ssh
+vagrant provision
 ```
+Previously this had manual instructions for creating a hadoop minicluster, but now that I've added a basic shell provisioner to the Vagrantfile, we get far enough that `pallet-hadoop` can take over.
 
-Now we set up Hadoop on the VM itself:
-
-```sh
-sudo apt-get update
-sudo aptitude install openjdk-7-jdk
-echo "export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/" >> ~/.bashrc
-
-mkdir hadoop-install
-cd hadoop-install
-
-wget http://archive.cloudera.com/cdh/3/hadoop-latest.tar.gz
-tar xvzf hadoop-latest.tar.gz
-cd hadoop-<version>
-
-vi conf/hadoop-env.sh
-# Edit the JAVA_HOME line as above.
-```
-
-Then edit `conf/core-site.xml` and replace the contents with:
-
-```xml
-<configuration>
-     <property>
-         <name>fs.default.name</name>
-         <value>hdfs://localhost:9000</value>
-     </property>
-</configuration>
-```
-
-Edit `conf/hdfs-site.xml` and replace the contents with:
-
-```xml
-<configuration>
-     <property>
-         <name>dfs.replication</name>
-         <value>1</value>
-     </property>
-</configuration>
-```
-
-Edit `conf/mapred-site.xml`
-
-```xml
-<configuration>
-     <property>
-         <name>mapred.job.tracker</name>
-         <value>localhost:9001</value>
-     </property>
-</configuration>
-```
-
-Old:
-```
-wget http://www.poolsaboveground.com/apache/hadoop/core/stable/hadoop-2.2.0.tar.gz
-# this is a mirror of the latest stable release of Hadoop. You'll probably want to go get a newer version from (potentially) a different mirror in the future..
-
-tar xvzf hadoop-2.2.0.tar.gz
-ln -s `pwd`/hadoop-2.2.0 hadoop
-echo "export HADOOP_INSTALL=`pwd`" >> ~/.bashrc
-
-# re-source exported vars
-source ~/.bashrc
-
-cd hadoop-2.2.0
-
-# Start the minicluster (one node)
-
-bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.2.0-tests.jar minicluster
-```
 
 
 ## License
