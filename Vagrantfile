@@ -14,7 +14,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-   config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-13.10_chef-provisionerless.box"
+  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-13.10_chef-provisionerless.box"
+
+  config.vm.host_name = "hadoop"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -23,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "10.10.10.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -44,21 +46,35 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-   config.vm.provider :virtualbox do |vb|
+  config.vm.provider :virtualbox do |vb|
   #   # Don't boot with headless mode
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
      vb.customize ["modifyvm", :id, "--memory", "2048"]
+   end
 
-     # Make sure our package list is up to date:
-     vb.provision :shell do |sh|
-       sh.inline = <<-EOF
+  # Shell basic provisioning
+  config.vm.provision :shell do |sh|
+    sh.inline = <<-EOF
          export DEBIAN_FRONTEND=noninteractive;
          apt-get update --assume-yes;
-       EOF
-     end
-   end
+         sudo apt-get install curl vim --assume-yes;
+
+         # make sure we have a user that Pallet can login as:
+         sudo userdel -r mathiasx # make sure no previous user
+         sudo useradd -m -G sudo -U mathiasx
+         rm mathias.keys # incase we've done this before
+         wget "https://github.com/mathias.keys"
+         mkdir -p /home/mathiasx/.ssh
+         mv mathias.keys /home/mathiasx/.ssh/authorized_keys
+         chmod 700 /home/mathiasx/.ssh
+         chmod 600 /home/mathiasx/.ssh/authorized_keys
+         chown -R mathiasx:mathiasx /home/mathiasx/.ssh
+         echo "Keys copied"
+    EOF
+  end
+
   #
   # View the documentation for the provider you're using for more
   # information on available options.
