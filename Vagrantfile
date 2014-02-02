@@ -59,7 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     sh.inline = <<-EOF
          export DEBIAN_FRONTEND=noninteractive;
          apt-get update --assume-yes;
-         sudo apt-get install curl vim --assume-yes;
+         sudo apt-get install curl --assume-yes;
 
          # make sure we have a user that Pallet can login as:
          sudo userdel -r mathiasx # make sure no previous user
