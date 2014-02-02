@@ -7,6 +7,9 @@
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.cloudhoist/pallet "0.7.5"]
                  [com.palletops/pallet-vmfest "0.4.0-alpha.1"]
+                 [vmfest "0.4.0-alpha.1"]
+                 [org.clojars.tbatchelli/vboxjxpcom "4.3.4"]
                  [org.cloudhoist/pallet-hadoop "0.3.3"]
                  [ch.qos.logback/logback-classic "1.0.9"]
-                 [org.slf4j/jcl-over-slf4j "1.7.3"]])
+                 [org.slf4j/jcl-over-slf4j "1.7.3"]]
+  :jvm-opts ["-Dvbox.home=/Applications/VirtualBox.app/Contents/MacOS"])
