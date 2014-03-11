@@ -1,4 +1,4 @@
-# herman & its thundering (hadoop) herd
+# herman & its thundering herd
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Woody_Herman.jpg/220px-Woody_Herman.jpg" alt="Woody Herman playing clarinet" align="right">
 
