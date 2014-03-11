@@ -2,7 +2,7 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Woody_Herman.jpg/220px-Woody_Herman.jpg" alt="Woody Herman playing clarinet" align="right">
 
-Does work for [remembrance](https://github.com/mathias/remembrance). The goal is to have this repo as an article ingestion worker queue and a method of running machine learning and NLP tasks on ingested articles.
+Does work for [remembrance](https://github.com/mathias/remembrance). The goal is to have this repo as an article ingestion worker queue and a method of running machine learning and NLP tasks on content.
 
 The name is in reference to Woody Herman and His Thundering Herd big band. Herman was a Jazz clarinetist originally from my hometown of Milwaukee, WI.
 
