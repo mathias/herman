@@ -6,6 +6,13 @@ More info on the Clojure DSL here:
 https://github.com/nathanmarz/storm/wiki/Clojure-DSL"
   (:require [backtype.storm [clojure :refer [defspout spout emit-spout!]]]))
 
+(defspout article-spout ["article"]
+  [conf context collector]
+  (let [articles-to-ingest [:some :list]]
+    (spout
+     (nextTuple [])))
+  )
+
 (defspout type-spout ["type"]
   [conf context collector]
   (let [stormys [:regular :bizarro]]
